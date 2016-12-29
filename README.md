@@ -6,4 +6,4 @@ User’s cannot create an account because there are a number of bugs in the form
 
 Task:
 
-To create Selenium tests (Using Java language) for the signup page and find all front-end bugs in the form stopping the user from creating an account.
+To create Selenium tests (Using Java language) for the signup page and find front-end bugs in the form stopping the user from creating an account.
