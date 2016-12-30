@@ -8,6 +8,8 @@ public class RegisterPage {
 
     private WebDriver driver;
 
+    private String alertText;
+
     @FindBy(name = "first_name")
     private WebElement firstName;
 
@@ -52,6 +54,9 @@ public class RegisterPage {
 
     @FindBy(xpath = "//input[@value='Continue Order']")
     private WebElement continueOrder;
+
+    @FindBy(id = "business_details")
+    private WebElement businessDetails;
 
     public RegisterPage(WebDriver driver){
         this.driver = driver;
@@ -120,14 +125,14 @@ public class RegisterPage {
     }
 
     public RegisterPage fillBusinessName(String _businessName){
-        if(userTypes.get(1).isSelected()) {
+        if(isBusinessDetailsDisplayed()) {
             businessName.sendKeys(_businessName);
         }
         return this;
     }
 
     public RegisterPage fillBusinessNumber(String _businessNumber){
-        if(userTypes.get(1).isSelected()) {
+        if(isBusinessDetailsDisplayed()) {
             businessName.sendKeys(_businessNumber);
         }
         return this;
@@ -145,5 +150,28 @@ public class RegisterPage {
 
     public void clickContinueOrder(){
         continueOrder.click();
+    }
+
+    public boolean isBusinessTypeSelected(){
+        return userTypes.get(1).isSelected();
+    }
+
+    public boolean isBusinessDetailsDisplayed(){
+        return businessDetails.isDisplayed();
+    }
+
+    public boolean isAlertPresent(){
+        try {
+            Alert alert = driver.switchTo().alert();
+            alertText = alert.getText();
+            alert.dismiss();
+            return true;
+        }catch (NoAlertPresentException e){
+            return false;
+        }
+    }
+
+    public String getAlertText(){
+        return alertText;
     }
 }
