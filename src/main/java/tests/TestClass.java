@@ -24,7 +24,7 @@ public class TestClass {
             try {
                 Assert.assertTrue(registerPage.isBusinessDetailsDisplayed());
             } catch (Error e) {
-                System.out.println("User type is Business, but Business Details are not displayed");
+                System.out.println("Test Case 01: user type is Business, but Business Details are not displayed");
             }
         }
     }
@@ -48,7 +48,7 @@ public class TestClass {
         try {
             Assert.assertTrue(!registerPage.isAlertPresent());
         }catch (Error e){
-            System.out.println(String.format("All fields are filled, but error message is: %s", registerPage.getAlertText()));
+            System.out.println(String.format("Test Case 02: all fields are filled, but error message is: %s", registerPage.getAlertText()));
         }
     }
 
