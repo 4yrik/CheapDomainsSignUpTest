@@ -3,12 +3,14 @@ package tests;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.apache.log4j.*;
 import pages.RegisterPage;
 import java.util.concurrent.TimeUnit;
 
 public class TestClass {
 
     private static WebDriver driver;
+    private static final Logger logger = Logger.getLogger(TestClass.class);
 
     @BeforeClass
     public static void beforeTest(){
@@ -24,7 +26,7 @@ public class TestClass {
             try {
                 Assert.assertTrue(registerPage.isBusinessDetailsDisplayed());
             } catch (Error e) {
-                System.out.println("Test Case 01: user type is Business, but Business Details are not displayed");
+                logger.error("Test Case 01: user type is Business, but Business Details are not displayed");
             }
         }
     }
@@ -48,7 +50,7 @@ public class TestClass {
         try {
             Assert.assertTrue(!registerPage.isAlertPresent());
         }catch (Error e){
-            System.out.println(String.format("Test Case 02: all fields are filled, but error message is: %s", registerPage.getAlertText()));
+            logger.error(String.format("Test Case 02: all fields are filled, but error message is: %s", registerPage.getAlertText()));
         }
     }
 
